@@ -6,9 +6,8 @@ module EventsHelper
 	end
 
 	def events_within_two_weeks
-		firsts_events = Event.where(:date_time => 2.weeks.from_now..2.weeks.from_now)
-		firsts_events.each do |evento|
-		end
+		puts Event.where(:date_time => 2.weeks.from_now..2.weeks.from_now).first.name
 	end
+		
 	
 end

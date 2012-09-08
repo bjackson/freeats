@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Freeats</title>
+  <title>Tappa Kegga</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'jquery' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,4 +13,23 @@
 
 </body>
 <%= yield :scripts %>
+<% content_for :scripts do %>
+<script>
+
+var counter = 0;
+
+Gmaps4Rails.callback = function() {
+  if (counter == 0){
+    counter += 1;
+    <%=   { "map_options" => {  
+                          "container_id" => "second_container", "id" => "second_map",
+                          "type" => "SATELLITE", "center_longitude" => 180, "zoom" => 3, "auto_adjust" => true 
+                          },
+            "markers"     => { "data" => @json }
+          }.to_gmaps4rails.html_safe
+    %>
+   }
+};
+<script>
+<% end %>
 </html>

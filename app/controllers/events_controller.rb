@@ -7,6 +7,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @events = Event.paginate(:page => params[:page])
+    @json = Event.all.to_gmaps4rails
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @events }
+    end
+  end
+
+    def map_page
     @events = Event.all
     @json = Event.all.to_gmaps4rails
     respond_to do |format|
