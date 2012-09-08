@@ -1,30 +1,98 @@
-<h1>Listing events</h1>
+<div class="jumbotron masthead">
+  <div class="container">
+    <!--img src="assets/img/logo.png"-->
+    <h1>Ταρρα Kεgg</h1>
+    <p style="color: white; opacity: 0.8;">Friday night, nothing to do? Try this.</p>
+    <ul class="masthead-links">
+      <li>That's Greek for... FUCKIN' PARTAYY!</li>
+    </ul>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date time</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<center>
+  <div class="container">
+    <h1 style="font-size: 30px;">Ταρρα Kεgg tells you about the hottest parties on campus.</h1>
+    <p class="marketing-byline">Go on, tap a keg!</p>
+    <div class="btn-group" style="padding-top: 20px;">
+      <button class="btn noline"><%= link_to 'Add Event', new_event_path %> <i class="icon-plus"></i> </button>
+      <button class="btn noline"><a style="border-bottom: none;"><i class="icon-th"></i> <%= link_to 'Event Map', 'events/map_page' %></a></button>
+  </div>
+</center>
 
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.date_time.to_s(:event_time) %></td>
-    <td><%= event.food %></td>
-    <td><%= event.location %></td>
-    <td><%= link_to 'Show', event %></td>
-  </tr>
-<% end %>
-</table>
+<p>
+  <div class="marketing" style="padding: 0px 40px 0px 40px;">
+
+
+  <% counter = 0 %>
+  <% counter2 = 0 %>
+  <% @events.each do |event| %>
+  <% counter2 = counter2 + 1 %>
+      <%if counter2%3 == 1 then %>
+        <div class="row-fluid">
+      <%end%>
+  <div class="span4 well well-small">
+        <h2><%= event.name %></h2>
+          <p> <span class="label label-warning">What</span>  <%= event.food %>
+            <hr class="soften">
+          <p> <span class="label label-info">When</span>  <%= event.date_time.to_s(:event_time) %>
+          <hr class="soften"> 
+           <p><span class="label">Where</span>  <%= event.location %>
+            <hr class="soften">
+            <p><i class="icon-tag"></i> <%= link_to 'Permalink', event %>
+            <br>
+            </div> 
+      <% counter = counter + 1 %>
+      <%if counter%3 == 0 then %>
+        </div>
+      <%end%>
+
+       
+      
+<% end %> 
+
+</div>
+<br><%= will_paginate @events %>
+    
+    <hr class="soften">
+<%= yield %>
+
+</div>
+
+</div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built by <a href="http://twitter.com/brett_jackson" target="_blank">@Brett_Jackson</a> and <a href="http://twitter.com/achalvarma" target="_blank">AchalVarma</a>.</p>
+        </ul>
+      </div>
+    </footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
+
+
+
 
 <br />
-<%= will_paginate @events %>
-<%= link_to 'New Event', new_event_path %>
-<%= link_to 'Map', 'events/map_page' %>
-
-<%= gmaps4rails(@json) %>

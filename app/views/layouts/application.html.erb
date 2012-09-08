@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tappa Kegga <%= yield(:title) %></title>
+  <title>Tappa Kegg <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag 'jquery' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/stylesheets/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<%=yield %>
 </body>
 <%= yield :scripts %>
 <% content_for :scripts do %>

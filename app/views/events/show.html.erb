@@ -1,25 +1,64 @@
 <%= content_for :title, " - #{@event.name}"%>
-<p id="notice"><%= notice %></p>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+    <!-- Navbar
+    ================================================== -->
+    
 
-<p>
-  <b>Date time:</b>
-  <%= @event.date_time.to_s(:event_time) %>
-</p>
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1><%= @event.name %></h1>
+    <p class="lead"> <%= @event.date_time.to_s(:event_time) %></p>
+    <p class="lead"> <%= @event.food %></p>
+    <p class="lead"><%= @event.location %></p>
+  </div>
+</header>
 
-<p>
-  <b>Description:</b>
-  <%= @event.food %>
-</p>
 
-<p>
-  <b>Location:</b>
-  <%= @event.location %>
-</p>
-
-<%= gmaps("map_options" => {'auto_zoom' => false, "zoom" => 16}, "markers" => { "data" => @event_json }) %>
+  <div class="container">
+  	
+  	<br>
+  	<%= gmaps("map_options" => {'auto_zoom' => false, "zoom" => 16}, "markers" => { "data" => @event_json }) %>
 <%= link_to 'Back', events_path %>
+  </div>
+
+
+
+     <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built by <a href="http://facebook.com/brettjackson" target="_blank">Brett Jackson</a> and <a href="http://twitter.com/achalvarma" target="_blank">Achal Varma</a>.</p>
+        </ul>
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
+
+
+
+  </body>
