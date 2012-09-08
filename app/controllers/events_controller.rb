@@ -18,10 +18,10 @@ class EventsController < ApplicationController
     def map_page
     @events = Event.all
     @json = Event.all.to_gmaps4rails
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @events }
-    end
+    #respond_to do |format|
+     # format.html # index.html.erb
+     # format.json { render :json => @events }
+    #end
   end
 
   # GET /events/1
