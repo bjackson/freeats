@@ -20,6 +20,6 @@
   <%= @event.location %>
 </p>
 
-
+<%= gmaps("map_options" => {'auto_zoom' => false, "zoom" => 16}, "markers" => { "data" => @event_json }) %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
