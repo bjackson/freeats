@@ -14,7 +14,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
-    <td><%= event.date_time %></td>
+    <td><%= event.date_time.to_s(:event_time) %></td>
     <td><%= event.food %></td>
     <td><%= event.location %></td>
     <td><%= link_to 'Show', event %></td>

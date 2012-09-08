@@ -1,6 +1,6 @@
 Freeats::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  Time::DATE_FORMATS[:event_time] = "%B %d at %I:%M %p"
   # Code is not reloaded between requests
   config.cache_classes = true
 
